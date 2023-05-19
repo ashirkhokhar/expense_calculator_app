@@ -30,14 +30,14 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/unnamed.png', // Replace with your splash screen image path
+              'assets/unnamed (1).png', // Replace with your splash screen image path
               width: 150,
               height: 150,
             ),
             const SizedBox(height: 20),
             const Text(
               'Expense Tracker',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 180),
             const CircularProgressIndicator(
@@ -45,8 +45,8 @@ class _SplashScreenState extends State<SplashScreen> {
             ), // Loading indicator
             const SizedBox(height: 20),
             const Text(
-              'Loading',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              'Loading...',
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
             ),
           ],
         ),

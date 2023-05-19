@@ -206,7 +206,7 @@ class _ExpenseCalculatorScreenState extends State<ExpenseCalculatorScreen> {
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
         backgroundColor: Colors.deepPurple[300],
-        title: const Center(child: Text('Weekly Expens33000030e')),
+        title: const Center(child: Text('Weekly Expense')),
         actions: [
           IconButton(
               icon: const Icon(Icons.show_chart),

@@ -27,6 +27,25 @@ class ChartScreen extends StatelessWidget {
             charts.ChartTitle('Amount',
                 behaviorPosition: charts.BehaviorPosition.start),
           ],
+          defaultRenderer: charts.BarRendererConfig(
+            // Customize the label position and style
+            barRendererDecorator: charts.BarLabelDecorator<String>(
+              insideLabelStyleSpec: charts.TextStyleSpec(
+                fontSize: 12,
+                color: charts.ColorUtil.fromDartColor(Colors.white),
+              ),
+              outsideLabelStyleSpec: charts.TextStyleSpec(
+                fontSize: 12,
+                color: charts.ColorUtil.fromDartColor(Colors.black),
+              ),
+              labelPosition: charts.BarLabelPosition.inside,
+              labelAnchor: charts.BarLabelAnchor.end,
+            ),
+          ),
+          domainAxis: charts.OrdinalAxisSpec(
+            // Remove the expense name from the x-axis labels
+            renderSpec: charts.NoneRenderSpec(),
+          ),
         ),
       ),
     );
