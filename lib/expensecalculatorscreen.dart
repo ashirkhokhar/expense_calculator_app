@@ -77,7 +77,6 @@ class _ExpenseCalculatorScreenState extends State<ExpenseCalculatorScreen> {
     final String itemCountText = _itemCountController.text;
 
     if (name.isEmpty || expenseText.isEmpty || itemCountText.isEmpty) {
-      // Show an error message and highlight the text fields
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Please fill in all fields'),
@@ -116,7 +115,6 @@ class _ExpenseCalculatorScreenState extends State<ExpenseCalculatorScreen> {
       _saveExpenses();
     } catch (e) {
       print('Error saving expenses: $e');
-      // Handle the error gracefully, show an error message, or perform any other necessary actions.
     }
 
     // Show a success message using a Snackbar
