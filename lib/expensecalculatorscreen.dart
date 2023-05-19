@@ -6,7 +6,6 @@ import 'package:weekly_expense_calcultor_app/chartscreen.dart';
 import 'package:weekly_expense_calcultor_app/listexpensescreen.dart';
 import 'package:weekly_expense_calcultor_app/main.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
-import 'package:modal_progress_hud/modal_progress_hud.dart';
 
 class ExpenseCalculatorScreen extends StatefulWidget {
   const ExpenseCalculatorScreen({Key? key}) : super(key: key);
@@ -67,7 +66,6 @@ class _ExpenseCalculatorScreenState extends State<ExpenseCalculatorScreen> {
       await prefs.setInt('totalItems', _totalItems);
     } catch (e) {
       print('Error saving expenses: $e');
-      // Handle the error gracefully, show an error message, or perform any other necessary actions.
     }
   }
 
