@@ -50,7 +50,6 @@ class _ExpenseCalculatorScreenState extends State<ExpenseCalculatorScreen> {
       });
     } catch (e) {
       print('Error loading expenses: $e');
-      // Handle the error gracefully, show an error message, or perform any other necessary actions.
     }
   }
 
