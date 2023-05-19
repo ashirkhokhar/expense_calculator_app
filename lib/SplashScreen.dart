@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:weekly_expense_calcultor_app/expensecalculatorscreen.dart';
 
@@ -11,9 +13,6 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
 
-    // Add any initialization tasks or delay here if needed
-
-    // Example: Navigate to the home screen after a delay
     Future.delayed(const Duration(seconds: 10), () {
       Navigator.pushReplacement(
         context,
