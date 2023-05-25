@@ -6,6 +6,7 @@ import 'package:weekly_expense_calcultor_app/chartscreen.dart';
 import 'package:weekly_expense_calcultor_app/listexpensescreen.dart';
 import 'package:weekly_expense_calcultor_app/main.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
+import 'package:weekly_expense_calcultor_app/notificationservice.dart';
 
 class ExpenseCalculatorScreen extends StatefulWidget {
   const ExpenseCalculatorScreen({Key? key}) : super(key: key);
@@ -26,10 +27,12 @@ class _ExpenseCalculatorScreenState extends State<ExpenseCalculatorScreen> {
   bool _itemCountFieldError = false;
 
   bool _isLoading = false;
+  final NotificationService _notificationService = NotificationService();
   @override
   void initState() {
     super.initState();
     _loadExpenses();
+    _notificationService.initialiseNotification();
   }
 
   void _loadExpenses() async {
@@ -94,6 +97,7 @@ class _ExpenseCalculatorScreenState extends State<ExpenseCalculatorScreen> {
             ? _itemCountFieldError = true
             : _itemCountFieldError = false;
       });
+
       return;
     }
 
@@ -116,7 +120,8 @@ class _ExpenseCalculatorScreenState extends State<ExpenseCalculatorScreen> {
     } catch (e) {
       print('Error saving expenses: $e');
     }
-
+    _notificationService.sendNotification(
+        "Expense Added", "Expense: $name, Amount: $expenseText");
     // Show a success message using a Snackbar
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -203,10 +208,10 @@ class _ExpenseCalculatorScreenState extends State<ExpenseCalculatorScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Colors.grey[300],
       appBar: AppBar(
         backgroundColor: Colors.deepPurple[300],
-        title: const Center(child: Text('Weekly Expense')),
+        title: Text('Weekly Expense'),
         actions: [
           IconButton(
               icon: const Icon(Icons.show_chart),
@@ -293,11 +298,11 @@ class _ExpenseCalculatorScreenState extends State<ExpenseCalculatorScreen> {
                   onPressed: _addExpense,
                   child: Text(
                     'Add Expense',
-                    style: GoogleFonts.bebasNeue(
-                        color: Colors.black, fontSize: 25, letterSpacing: 1),
+                    style: TextStyle(
+                        color: Colors.white, fontSize: 15, letterSpacing: 1),
                   ),
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.yellow[600],
+                    primary: Colors.deepPurple[300],
                     onPrimary: Colors.white,
                   ),
                 ),
@@ -309,11 +314,11 @@ class _ExpenseCalculatorScreenState extends State<ExpenseCalculatorScreen> {
                   onPressed: _showExpenseDetails,
                   child: Text(
                     'Details List',
-                    style: GoogleFonts.bebasNeue(
-                        color: Colors.black, fontSize: 25, letterSpacing: 1),
+                    style: TextStyle(
+                        color: Colors.white, fontSize: 15, letterSpacing: 1),
                   ),
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.green[500],
+                    primary: Colors.deepPurple[300],
                     onPrimary: Colors.white,
                   ),
                 ),
@@ -324,7 +329,7 @@ class _ExpenseCalculatorScreenState extends State<ExpenseCalculatorScreen> {
                 child: Container(
                   height: 200,
                   decoration: BoxDecoration(
-                    color: Colors.red[500],
+                    color: Colors.deepPurple[300],
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Padding(
@@ -335,9 +340,9 @@ class _ExpenseCalculatorScreenState extends State<ExpenseCalculatorScreen> {
                       children: [
                         Text(
                           'Total Weekly Expenses: \$${_calculateTotalExpenses().toStringAsFixed(2)}',
-                          style: GoogleFonts.bebasNeue(
-                            color: Colors.black,
-                            fontSize: 25,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
                           ),
                         ),
                         const SizedBox(
@@ -345,9 +350,9 @@ class _ExpenseCalculatorScreenState extends State<ExpenseCalculatorScreen> {
                         ),
                         Text(
                           'Total Items: $_totalItems',
-                          style: GoogleFonts.bebasNeue(
-                            color: Colors.black,
-                            fontSize: 25,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
                           ),
                         ),
                       ],

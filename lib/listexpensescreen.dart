@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
@@ -55,15 +57,26 @@ class _ExpensesListScreenState extends State<ExpensesListScreen> {
       body: Column(children: [
         Padding(
           padding: const EdgeInsets.all(16.0),
-          child: TextField(
-            cursorColor: Colors.black,
-            controller: _searchController,
-            onChanged: _filterExpenses,
-            decoration: InputDecoration(
-              hintText: 'Search',
-              prefixIcon: const Icon(Icons.search),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(8.0),
+          child: Container(
+            color: Colors.white,
+            child: TextField(
+              cursorColor: Colors.white,
+              controller: _searchController,
+              onChanged: _filterExpenses,
+              decoration: InputDecoration(
+                hintText: 'Search',
+                hintStyle: TextStyle(color: Colors.grey),
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                      color: Colors.black), // Custom color for focused border
+                ),
+                prefixIcon: const Icon(
+                  Icons.search,
+                  color: Colors.black,
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
               ),
             ),
           ),
@@ -97,34 +110,31 @@ class _ExpensesListScreenState extends State<ExpensesListScreen> {
                       ),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.only(
-                          top: 20.0, left: 12, right: 12, bottom: 12),
+                      padding: const EdgeInsets.all(12),
                       child: ListTile(
-                        tileColor: Colors.white,
-                        title: Text(
-                          'Expense: ${expense.name}',
-                          style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                              color: Colors.black,
+                        tileColor: Colors.deepPurple[300],
+                        title: Padding(
+                          padding: const EdgeInsets.only(
+                              right: 15.0, top: 15.0, bottom: 15.0),
+                          child: Text(
+                            'Expense: ${expense.name}',
+                            style: TextStyle(
+                              color: Colors.white,
                               letterSpacing: 1,
-                              fontSize: 20,
-                              fontWeight:
-                                  FontWeight.bold, // Highlighted font weight
+                              fontSize: 18,
+                              // Highlighted font weight
                             ),
                           ),
                         ),
                         subtitle: Text(
-                          'Amount: \$${expense.amount.toStringAsFixed(2)}\n'
-                          'Date: ${DateFormat('EEE, MMM d, yyyy').format(expense.dateTime)}\n'
-                          'Time: ${DateFormat('h:mm a').format(expense.dateTime)}',
-                          style: GoogleFonts.lato(
-                            textStyle: const TextStyle(
-                              color: Colors.black,
-                              letterSpacing: 1,
-                              fontSize: 20,
-                              fontStyle:
-                                  FontStyle.italic, // Highlighted font style
-                            ),
+                          'Amount: \$${expense.amount.toStringAsFixed(2)}\n\n'
+                          'Date: ${DateFormat('EEE, MMM d, yyyy').format(expense.dateTime)}\n\n'
+                          'Time: ${DateFormat('h:mm a').format(expense.dateTime)}\n',
+                          style: TextStyle(
+                            color: Colors.white,
+                            letterSpacing: 1,
+                            fontSize: 18,
+                            // Highlighted font style
                           ),
                         ),
                       ),

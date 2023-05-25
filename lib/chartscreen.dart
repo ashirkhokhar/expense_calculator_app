@@ -42,7 +42,7 @@ class ChartScreen extends StatelessWidget {
               labelAnchor: charts.BarLabelAnchor.end,
             ),
           ),
-          domainAxis: charts.OrdinalAxisSpec(
+          domainAxis: const charts.OrdinalAxisSpec(
             // Remove the expense name from the x-axis labels
             renderSpec: charts.NoneRenderSpec(),
           ),
